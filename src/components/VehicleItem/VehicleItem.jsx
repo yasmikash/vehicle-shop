@@ -68,8 +68,7 @@ const VehicleItem = ({
         </div>
         <Button
           onClick={onHandleSubmit}
-          //   disabled={bidAmount ? bidAmount.length : true}
-          disabled={isDisbaled}
+          disabled={isDisbaled || !bidAmount}
           type="submit"
         >
           Submit

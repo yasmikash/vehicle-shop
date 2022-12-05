@@ -12,8 +12,8 @@ const SingleVehicle = () => {
   const vehicles = useSelector(selectVehicles);
   const cartItems = useSelector(selectItems);
 
-  const [selectedItem, setSelectedItem] = useState(undefined);
-  const [bidAmount, setBidAmount] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [bidAmount, setBidAmount] = useState(undefined);
   const [formError, setFormError] = useState({
     error: false,
     message: "",
@@ -31,7 +31,7 @@ const SingleVehicle = () => {
       return;
     }
     setFormError({ error: false, message: "" });
-    dispatch(addToCart({ item: selectedItem, amount }));
+    dispatch(addToCart({ item: selectedItem, bidAmount: amount }));
     toast.success("Item has been added to cart");
   };
 
@@ -89,8 +89,10 @@ const SingleVehicle = () => {
               </div>
               <Button
                 onClick={onHandleSubmit}
-                //   disabled={bidAmount ? bidAmount.length : true}
-                disabled={!!cartItems.find((i) => i.id === selectedItem.id)}
+                disabled={
+                  !!cartItems.find((i) => i.id === selectedItem.id) ||
+                  !bidAmount
+                }
                 type="submit"
               >
                 Submit
