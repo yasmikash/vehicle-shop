@@ -1,4 +1,7 @@
 import { HomePage } from "../pages/Home";
+import { CartPage } from "../pages/CartPage";
+import { SingleVehiclePage } from "../pages/SingleVehiclePage";
+
 import { MainLayout } from "../templates/MainLayout";
 
 export const routes = [
@@ -11,8 +14,12 @@ export const routes = [
         element: <HomePage />,
       },
       {
-        path: "shop",
-        element: <div>Shop</div>,
+        path: "cart",
+        element: <CartPage />,
+      },
+      {
+        path: "vehicle",
+        element: <SingleVehiclePage />,
       },
     ],
   },
